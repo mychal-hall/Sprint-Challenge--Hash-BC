@@ -28,7 +28,7 @@ def proof_of_work(last_proof):
     while valid_proof(last_hash, proof) is False:
         proof += 1
 
-    print("Proof found: " + str(proof) + " in " + str(timer() - start))
+    print("Found proof:" + str(proof) + ". Time Elapsed " + str(timer() - start))
     return proof
 
 
@@ -44,7 +44,6 @@ def valid_proof(last_hash, proof):
     guess = f'{proof}'.encode()
     hash_guess = hashlib.sha256(guess).hexdigest()
 
-    # validate if your next proof hash - first 6 characters - matches last hash - last 6 characters
     return hash_guess[:6] == last_hash[-6:]
 
 
